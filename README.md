@@ -3,8 +3,8 @@
 </p>
 
 ## kong API 网关系列
->>### kong 网关应用
+>>### [kong 网关应用以及插件使用](api/kong.md)
 >>### kong API 网关源码阅读
->>### kong 插件
+
 
 ## kong Ingress 系列
