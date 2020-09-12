@@ -14,8 +14,29 @@
 * tags: 标签，用于分类此服务的类别，比如可以添加部门名称作为分类，这样在获取同个部门下有多少服务时，传递此 tag 即可。
 
 ## Route
-route(路由):是具体的匹配规则，上面的服务只是当匹配到某一个
+* name: 路由名称，同样做到见名知义。
+* protocols: 请求协议，指的是请求 kong 网关时的请求协议，默认为 ["http","https"]。
+* methods: 此路由匹配的请求方法，可选的有["GET","PUT","POST","OPTIONS","HEAD","DELETE","PATCH","CONNECT","TRACE"]
+* hosts: 匹配此路由的 host,注意这个是绑定到你 kong 网关的域名而不是后端服务的域名，比如你网关绑定了两个域名 host1,host2,而在 route 上只配置了 host1 时，那么只有用 host1 请求网关才能正确路由，用 host2 只会得到 404 错误。
+* paths: 匹配此路由的 path 列表。
+* headers: 匹配此路由的 headers 列表。注意 HOST 已经用 hosts 字段指定了，不能在此字段指定。
+* regex_priority: 指定路由匹配的优先级，当两个路由都匹配到了时，并且优先级也相同，那么会使用 created_at 最旧的。默认值为 0 。
+* strip_path: 代理到后端路径时，是否将 route 的 path 给剔除，默认值为 true。比如 path 为 /test，如果选择 false, 那么当请求 /test/get 代理到后端路径时为 http://\$UPSTREAM_URL/test/get, 为 true 则代理到 http://\$UPSTREAM_URL/get
+* preserve_host: 是否将 匹配的 hosts 列表中的 host 代理到 后端去，体现在请求的 HOST 字段。
+* tags: 标签，和 service 用法一致。 
 
 ## Plugins
+* name: 插件名称
+* route: 作用的路由
+* service： 作用的服务
+* consumer: 作用的 consumer
+* config: pugins 配置各不相同，根据插件 config 配置。
+* protocols: 与 route protocls 一致
+* enabled: 是否开启
+* tags: 与 service、route tags 含义一致
 
 ## Consumer
+消费 API 的消费者, 一个服务与路由利用 ACL 可以限制哪些 consumer 可以消费。后面讲到插件会介绍。
+* username: 消费者的用户名，必须全局唯一。
+* custom_id: 用户存储的唯一id, 用来和现有数据库中的用户一一映射。
+* tags: 与 service、route tags 含义一致。
