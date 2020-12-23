@@ -54,3 +54,6 @@ sh start.sh 2.0.1 mdone
 ![avatar](images/konga-service.png)
 ![avatar](images/konga-route.png)
 这时我们再运行```curl localhost:8000/test``` 就得到百度的页面源码。在浏览器输入 ```localhost:8000/test``` 并回车我们就会等到百度首页，就是这么简单。
+
+## 接下来
+你可以继续查看 [kong 插件使用-cors](plugins/cors.md)

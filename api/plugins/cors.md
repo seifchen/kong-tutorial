@@ -143,3 +143,7 @@ curl -XOPTIONS  http://localhost:8000/test -v -H 'origin:http://www.example.com'
 * Connection #0 to host localhost left intact
 * Closing connection 0
 ```
+
+
+## 接下来
+你可以继续查看 [kong 插件使用-allow-path-list](allow-path-list.md)

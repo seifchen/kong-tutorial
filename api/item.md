@@ -40,3 +40,7 @@
 * username: 消费者的用户名，必须全局唯一。
 * custom_id: 用户存储的唯一id, 用来和现有数据库中的用户一一映射。
 * tags: 与 service、route tags 含义一致。
+
+
+## 接下来
+你可以继续查看 [kong 网关介绍、安装、使用](kong.md)
