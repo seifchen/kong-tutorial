@@ -1,5 +1,5 @@
 #!/bin/bash
-export KONG_PG_HOST=kong
+export KONG_PG_HOST=kong-database
 export KONG_PG_USER=kong
 export KONG_PG_DB=kong
 export KONG_PG_PORT=5432
